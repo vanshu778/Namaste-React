@@ -9,22 +9,6 @@ const heading = React.createElement(
 // const root = ReactDOM.createRoot(document.getElementById("root"));
 // root.render(heading);
 
-/* 
-Expected HTML structure to be created:
-
-<div id="parent">
-    <div id="child">
-        <h1>My name is Vanshika Thesiya</h1>
-        <h2>My name is Vanshika Thesiya</h2>
-    </div>
-
-    <div id="child1">
-        <h1>I am a Food Lover</h1>
-        <h2>I am a Food Lover</h2>
-    </div>
-</div>
-*/
-
 // ✅ Creating a nested structure using arrays of React elements
 const parent = React.createElement("div", { id: "parent" }, [
   // First child <div> with id 'child'

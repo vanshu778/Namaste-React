@@ -1,0 +1,25 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "This is Namaste React",
+  "source": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vanshu778/Namaste-React.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Vanshika Thesiya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vanshu778/Namaste-React/issues"
+  },
+  "homepage": "https://github.com/vanshu778/Namaste-React#readme",
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  }
+}
