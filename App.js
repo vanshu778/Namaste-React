@@ -1,3 +1,5 @@
+import React from "react";
+import ReactDOM from "react-dom/client"
 // ✅ Creating a single <h1> element using React.createElement
 const heading = React.createElement(
   "h1",                        // Type of element
