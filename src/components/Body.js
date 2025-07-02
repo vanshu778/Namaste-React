@@ -6,6 +6,10 @@ const Body = () => {
   //Local State Variable - Super Powerful variable (Hooks)
   const [listOfRestaurants, setlistOfRestaurants] = useState([]);
 
+  const [searchText, setsearchText] = useState("");
+
+  //Whenevr state vaiable update, react triggers a reconciliation cycle (re-renders the component)
+  console.log("Body-Rendered");
   useEffect(() => {
     fetchData();
   }, []);
@@ -23,9 +27,32 @@ const Body = () => {
     );
   };
 
-  return listOfRestaurants.length === 0 ? <Shimmer/> : (
+  return listOfRestaurants.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
+        <div className="search">
+          <input
+            type="text"
+            className="search-box"
+            value={searchText}
+            onChange={(e) => {
+              setsearchText(e.target.value);
+            }}
+          />
+          <button
+            onClick={() => {
+              //Filter the restaurant cards and update the Ui
+              const filteredRestaurant = listOfRestaurants.filter((res) => 
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+              );
+              setlistOfRestaurants(filteredRestaurant);
+            }}
+          >
+            Search
+          </button>
+        </div>
         <button
           className="filter-btn"
           onClick={() => {
