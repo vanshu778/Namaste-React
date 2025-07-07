@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 
+
 const Body = () => {
   //Local State Variable - Super Powerful variable (Hooks)
   const [listOfRestaurants, setlistOfRestaurants] = useState([]);
