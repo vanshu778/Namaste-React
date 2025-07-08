@@ -1,35 +1,51 @@
 import React from "react";
-class UserClass extends React.Component{
+class UserClass extends React.Component {
+  constructor(props) {
+    super(props);
 
-    constructor(props){
-        super(props);
+    console.log(props);
+    this.state = {
+      count: 0,
+      count1: 1,
+    };
+    console.log("Child Constructor");
+  }
 
-        console.log(props);
-        this.state = {
-            count: 0,
-            count1:1,
-        }
-    }
-    render(){
-        const{name,location} = this.props;
-        const{count} = this.state;
-        return (
-        <div className="user-card">
+  componentDidMount(){
+    console.log("Child Component Did Mount")
+
+    //Api call
+  }
+
+
+
+
+  render() {
+    const { name, location } = this.props;
+    const { count } = this.state;
+    console.log("Child Render");
+
+    return (
+      <div className="user-card">
         <h1>Count: {count}</h1>
-        <button onClick={() => {
+        <button
+          onClick={() => {
             //Never Update state variables directly
-            // this.state.count=this.state.count+1; 
+            // this.state.count=this.state.count+1;
 
             this.setState({
-                count:this.state.count+1,
-            })
-        }}>Count Increase</button>
+              count: this.state.count + 1,
+            });
+          }}
+        >
+          Count Increase
+        </button>
         <h2>Name: {name}</h2>
         <h3>Location: {location}</h3>
         <h4>Contact: vanshu778</h4>
-    </div>)
-    }
-
+      </div>
+    );
+  }
 }
 
 export default UserClass;
