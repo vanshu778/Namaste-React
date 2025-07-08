@@ -21,9 +21,13 @@ export const Header = () => {
           <li>
             <Link to="/about">About Us</Link>
           </li>
+           <li>
+            <Link to="/grocery">Grocery</Link>
+          </li>
           <li>
             <Link to="/contact">Contact Us</Link>
           </li>
+
           <li>Cart</li>
           <button
             className="login"
