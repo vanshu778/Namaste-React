@@ -139,7 +139,6 @@ input[type="text"], input[type="search"] {
     border-radius: 6px;
     font-size: 16px;
     cursor: pointer;
-    transition: background 0.2s;
 }
 
 .filter-btn {
@@ -151,6 +150,9 @@ input[type="text"], input[type="search"] {
     border-radius: 6px;
     font-size: 16px;
     cursor: pointer;
-    transition: background 0.2s;
 }
 
+.user-card{
+    padding: 10px;
+    border: 1px solid black;
+}
