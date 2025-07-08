@@ -6,6 +6,10 @@ const User = ({ name }) => {
   useEffect(() => {
     //Api Calls
   },[])
+
+  // async funciton getUserInfo() => {
+  //   const data = await fetch("https://api.github.com/users/vanshu778")
+  // }
   return (
     <div className="user-card">
       <h1>Count = {count}</h1>
