@@ -11,7 +11,7 @@ const User = ({ name }) => {
   //   const data = await fetch("https://api.github.com/users/vanshu778")
   // }
   return (
-    <div className="user-card">
+    <div className="user-card m-4 p-4 bg-gray-50 rounded-lg">
       <h1>Count = {count}</h1>
       <h1>Count1 = {count1}</h1>
       <h2>Name:{name}</h2>
