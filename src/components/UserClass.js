@@ -3,7 +3,7 @@ class UserClass extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log(props);
+    // console.log(props);
     this.state = {
       userInfo: {
         name: "dummy",
@@ -21,15 +21,15 @@ class UserClass extends React.Component {
     this.setState({
       userInfo: json,
     });
-    console.log(json);
+    // console.log(json);
   }
 
   componentDidUpdate(){
-    console.log("Component Did Update")
+    // console.log("Component Did Update")
   }
 
   componentWillUnmount(){
-    console.log("Component Will Unmount")
+    // console.log("Component Will Unmount")
   }
   render() {
     const { name, location, avatar_url } = this.state.userInfo;

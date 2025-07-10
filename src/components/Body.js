@@ -1,8 +1,9 @@
 import RestaurantCard from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   //Local State Variable - Super Powerful variable (Hooks)
@@ -11,8 +12,6 @@ const Body = () => {
   const [searchText, setsearchText] = useState("");
 
   // const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
-
-  console.log("Body-Rendered", listOfRestaurants);
   useEffect(() => {
     fetchData();
   }, []);
@@ -39,6 +38,8 @@ const Body = () => {
     return (
       <h1>Looks like you're offline!! please check your internet connection</h1>
     );
+  const { loggedInUser, setUserName } = useContext(UserContext);
+
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
@@ -66,7 +67,7 @@ const Body = () => {
             Search
           </button>
         </div>
-        <div className="search m-4 p-4">
+        <div className="search m-4 p-4 flex items-center">
           <button
             className="px-4 py-2 bg-gray-100 m-4 rounded-lg"
             onClick={() => {
@@ -78,6 +79,14 @@ const Body = () => {
           >
             Top Rated Restaurants
           </button>
+        </div>
+        <div className="search m-4 p-4 flex items-center">
+          <label>UserName: </label>
+          <input
+            className="border border-black "
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          />
         </div>
       </div>
       <div className="flex flex-wrap">
