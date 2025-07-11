@@ -8,6 +8,12 @@ const cartSlice = createSlice(
         },
         reducers: {
             addItem: (state,action) => {
+                //Vanilla(older) Redux => Don't Mutate State, returning was mandatory
+                //const newState = [...state];
+                //newState.items.push(action.payload);
+                //return newState;
+
+                //Redux Toolkit
                 //mutating the state here
                 state.items.push(action.payload);
             },
@@ -15,7 +21,10 @@ const cartSlice = createSlice(
                 state.items.pop();
             },
             clearCart: (state) => {
-                state.items.length = 0;
+                //RTK - either Mutate the existing state or return a new state
+                // state.items.length = 0; //originalState = []
+
+                return {items:[]}; //this new object will be replaced inside originalState = []
             }
         }
     }
