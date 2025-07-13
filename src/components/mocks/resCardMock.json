@@ -1,0 +1,81 @@
+{
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
+    "info": {
+        "id": "842354",
+        "name": "NAVRANG CAFE & FOOD ZONE",
+        "cloudinaryImageId": "25c2f35df621a5afea3ca8c0d7c3c2a9",
+        "locality": "Prahlad Nagar",
+        "areaName": "SHYAMAL",
+        "costForTwo": "₹400 for two",
+        "cuisines": [
+            "Beverages",
+            "Snacks",
+            "Fast Food",
+            "Pizzas",
+            "Chaat"
+        ],
+        "avgRating": 4.1,
+        "veg": true,
+        "parentId": "499077",
+        "avgRatingString": "4.1",
+        "totalRatingsString": "366",
+        "sla": {
+            "deliveryTime": 32,
+            "lastMileTravel": 4.9,
+            "serviceability": "SERVICEABLE",
+            "slaString": "30-35 mins",
+            "lastMileTravelString": "4.9 km",
+            "iconType": "ICON_TYPE_EMPTY"
+        },
+        "availability": {
+            "nextCloseTime": "2025-07-14 06:00:00",
+            "opened": true
+        },
+        "badges": {},
+        "isOpen": true,
+        "type": "F",
+        "badgesV2": {
+            "entityBadges": {
+                "imageBased": {},
+                "textBased": {},
+                "textExtendedBadges": {}
+            }
+        },
+        "aggregatedDiscountInfoV3": {
+            "header": "ITEMS",
+            "subHeader": "AT ₹112"
+        },
+        "orderabilityCommunication": {
+            "title": {},
+            "subTitle": {},
+            "message": {},
+            "customIcon": {}
+        },
+        "differentiatedUi": {
+            "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+            "differentiatedUiMediaDetails": {
+                "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+                "lottie": {},
+                "video": {}
+            }
+        },
+        "reviewsSummary": {},
+        "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+        "restaurantOfferPresentationInfo": {},
+        "externalRatings": {
+            "aggregatedRating": {
+                "rating": "--"
+            }
+        },
+        "ratingsDisplayPreference": "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY"
+    },
+    "analytics": {
+        "context": "seo-data-ac80ab9e-312f-41c8-aa91-b5f701562ebb"
+    },
+    "cta": {
+        "link": "https://www.swiggy.com/city/ahmedabad/navrang-cafe-and-food-zone-prahlad-nagar-shyamal-rest842354",
+        "text": "RESTAURANT_MENU",
+        "type": "WEBLINK"
+    },
+    "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
+}
