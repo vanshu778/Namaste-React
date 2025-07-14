@@ -6,12 +6,13 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
 
 const Body = () => {
-  //Local State Variable - Super Powerful variable (Hooks)
   const [listOfRestaurants, setlistOfRestaurants] = useState([]);
   const [filteredRestaurant, setfilteredRestaurant] = useState([]);
   const [searchText, setsearchText] = useState("");
 
-  // const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
+  const onlineStatus = useOnlineStatus();
+  const { loggedInUser, setUserName } = useContext(UserContext);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -22,85 +23,84 @@ const Body = () => {
     );
 
     const json = await data.json();
-    console.log(json);
-    //optional chaining
     setlistOfRestaurants(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []
     );
     setfilteredRestaurant(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []
     );
   };
 
-  const onlineStatus = useOnlineStatus();
-
-  if (onlineStatus === false)
+  if (onlineStatus === false) {
     return (
-      <h1>Looks like you're offline!! please check your internet connection</h1>
+      <h1 className="text-center text-red-600 text-xl mt-10">
+        Looks like you're offline! Please check your internet connection.
+      </h1>
     );
-  const { loggedInUser, setUserName } = useContext(UserContext);
+  }
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
-      <div className="filter flex">
-        <div className="search m-4 p-4">
+    <div className="px-6 py-4">
+      {/* Filters Section */}
+      <div className="filter flex flex-wrap gap-4 justify-between items-center mb-6 bg-gray-50 p-4 rounded-lg shadow-sm">
+        {/* Search Box */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2">
           <input
             type="text"
             data-testid="searchInput"
-            className="border border-solid border-black "
+            className="border border-gray-300 rounded px-3 py-1 outline-none focus:ring-2 focus:ring-blue-300"
+            placeholder="Search restaurant..."
             value={searchText}
-            onChange={(e) => {
-              setsearchText(e.target.value);
-            }}
+            onChange={(e) => setsearchText(e.target.value)}
           />
           <button
-            className="px-4 py-2 bg-green-100 m-4 rounded-lg"
+            className="px-4 py-1 bg-green-500 text-white rounded hover:bg-green-600 transition"
             onClick={() => {
-              //Filter the restaurant cards and update the Ui
-              const filteredRestaurant = listOfRestaurants.filter((res) =>
+              const filtered = listOfRestaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
-              setfilteredRestaurant(filteredRestaurant);
+              setfilteredRestaurant(filtered);
             }}
           >
             Search
           </button>
         </div>
-        <div className="search m-4 p-4 flex items-center">
+
+        {/* Top Rated Filter */}
+        <div>
           <button
-            className="px-4 py-2 bg-gray-100 m-4 rounded-lg"
+            className="px-4 py-1 bg-yellow-400 text-white rounded hover:bg-yellow-500 transition"
             onClick={() => {
-              const filteredList = listOfRestaurants.filter(
+              const topRated = listOfRestaurants.filter(
                 (res) => res.info.avgRating > 4
               );
-              setfilteredRestaurant(filteredList);
+              setfilteredRestaurant(topRated);
             }}
           >
             Top Rated Restaurants
           </button>
         </div>
-        <div className="search m-4 p-4 flex items-center">
-          <label>UserName: </label>
+
+        {/* Username Input */}
+        <div className="flex items-center gap-2">
+          <label className="font-medium">UserName:</label>
           <input
-            className="border border-black "
+            className="border border-gray-300 rounded px-2 py-1 outline-none focus:ring-2 focus:ring-purple-300"
             value={loggedInUser}
             onChange={(e) => setUserName(e.target.value)}
           />
         </div>
       </div>
-      <div className="flex flex-wrap">
+
+      {/* Restaurant Cards Section */}
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {filteredRestaurant.map((restaurant) => (
-          // <Link
-          //   to={"/restaurants/" + restaurant.info.id}
-          //   key={restaurant.info.id}
-          // >
-          //   {restaurant.data.promoted ? (<RestaurantCardPromoted resData={restaurant}/>) : (<RestaurantCard resData={restaurant} />)}
-          // </Link>
           <Link
             to={"/restaurants/" + restaurant.info.id}
             key={restaurant.info.id}
+            className="hover:scale-105 transition-transform duration-200"
           >
             <RestaurantCard resData={restaurant} />
           </Link>

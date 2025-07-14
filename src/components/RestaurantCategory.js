@@ -1,26 +1,34 @@
 import { useState } from "react";
 import ItemList from "./ItemList";
 
-const RestaurantCategory = ({ data,showItems, setShowIndex, dummy}) => {
-    const handleClick = () => {
-        setShowIndex();
-    }
+const RestaurantCategory = ({ data, showItems, setShowIndex, dummy }) => {
+  const handleClick = () => {
+    setShowIndex();
+  };
+
   return (
-    <div>
-      {/* Header */}
-      <div className="w-6/12 mx-auto my-4 bg-gray-50 shadow-lg p-4 ">
+    <div className="w-full flex justify-center">
+      <div className="w-11/12 sm:w-9/12 md:w-7/12 lg:w-6/12 my-4 bg-gray-50 shadow-md rounded-lg transition-all duration-300">
+        {/* Header */}
         <div
-          className="flex justify-between cursor-pointer"
+          className="flex justify-between items-center cursor-pointer p-4 hover:bg-gray-100 rounded-t-lg"
           onClick={handleClick}
         >
-          <span className="font-bold text-lg">
-            {data.title} ({data.itemCards.length})
+          <span className="font-semibold text-lg text-gray-800">
+            {data.title} <span className="text-gray-500">({data.itemCards.length})</span>
           </span>
-          <span>⬇</span>
+          <span className="text-xl transition-transform duration-300">
+            {showItems ? "▲" : "▼"}
+          </span>
         </div>
-        {showItems && <ItemList items={data.itemCards} dummy={dummy} />}
+
+        {/* Body */}
+        {showItems && (
+          <div className="px-4 pb-4">
+            <ItemList items={data.itemCards} dummy={dummy} />
+          </div>
+        )}
       </div>
-      {/* Accordian Body */}
     </div>
   );
 };

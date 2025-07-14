@@ -3,23 +3,36 @@ import ItemList from "./ItemList";
 import { clearCart } from "../utils/cartSlice";
 
 const Cart = () => {
-  const store = useSelector((store) => store);
+  const cartItems = useSelector((store) => store.cart.items);
+  const dispatch = useDispatch();
 
-  const cartItems = store.cart.items;
-  
-  const dispatch = useDispatch()
   const handleClearCart = () => {
     dispatch(clearCart());
-  }
+  };
+
   return (
-    <div className="text-center m-4 p-4 ">
-      <h1 className="text-2xl font-bold">Cart</h1>
-      <div className="w-6/12 m-auto">
-      <button className="p-2 m-2 bg-black text-white rounded-lg" onClick={
-        handleClearCart
-      }> Clear Cart</button>
-      {cartItems.length === 0 && <h1>Cart is empty. Add items to the card! </h1>}
-        <ItemList items={cartItems} />
+    <div className="p-6 text-center min-h-screen bg-gray-50">
+      <h1 className="text-3xl font-bold mb-6 text-gray-800">Your Cart</h1>
+
+      <div className="w-full max-w-2xl mx-auto bg-white shadow-md rounded-xl p-6">
+        {cartItems.length === 0 ? (
+          <h2 className="text-lg text-gray-600 mb-4">
+            🛒 Your cart is empty. Add items to the cart!
+          </h2>
+        ) : (
+          <>
+            <div className="flex justify-end mb-4">
+              <button
+                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
+                onClick={handleClearCart}
+              >
+                Clear Cart
+              </button>
+            </div>
+
+            <ItemList items={cartItems} />
+          </>
+        )}
       </div>
     </div>
   );
